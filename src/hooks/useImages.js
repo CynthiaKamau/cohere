@@ -1,26 +1,21 @@
-import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const usePostQuery = (url) => {
   const [responseData, setResponseData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const callPost = async () => {
-    setLoading(true);
-    await axios
-      .get(url)
-      .then((res) => {
-        setResponseData(res.data?.data?.children);
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("abantu", data)
+        setError(data.error);
+        setResponseData(data?.data?.children);
         setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-        setError(err);
       });
-  };
-
-  return { responseData, loading, error, callPost };
+  }, [url]);
+  return { responseData, loading, error };
 };
 
 export default usePostQuery;

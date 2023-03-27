@@ -5,16 +5,16 @@ import { Donate } from "./components/Donate";
 function App() {
   return (
     <div className="App">
-      <div className="grid grid-flow-col auto-cols-max">
-        <div className="mt-8">
+      <div className="container">
+        <div className="section pb-8">
           <p>Question 1</p>
           <Carousel />
         </div>
-        <div className="mt-8">
+        <div className="section pt-8">
           <p>Question 2</p>
           <Donate />
         </div>
-        <div className="mt-8">
+        <div className="section mt-8">
           <p>Question 3 : Implement a queue.</p>
           <p> Is contained in functions directory</p>
         </div>
